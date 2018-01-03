@@ -1,2 +1,8 @@
 .vscode/
 .DS_Store
+public_html/cake/
+public_html/cake*
+public_html/greyback_core/
+public_html/plugins/
+public_html/vendors/
+public_html/webroot_old/
