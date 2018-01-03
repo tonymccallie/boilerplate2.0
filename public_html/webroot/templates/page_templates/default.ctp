@@ -6,15 +6,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Boilerplate 2.0</title>
 
-	<!-- Livereload (remove for production) -->
-	<script src="http://localhost:35729/livereload.js"></script>
+	<?php if(true): ?>
+	<!-- Livereload (remove or set false for production) -->
+	<script src="http://<?php echo $_SERVER['HTTP_HOST'] ?>:35729/livereload.js"></script>
 	<!-- End Livereload -->
+	<?php endif ?>
 
-	<script src="webroot/js/bundle.js"></script>
-	<link rel="stylesheet" type="text/css" href="webroot/css/styles.min.css" />
+	<script src="/js/bundle.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/styles.min.css" />
 </head>
 
-<body>
+<body id="<?php echo $this->params['page_slug'] ?>">
 	<div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
@@ -238,5 +240,4 @@
         </div>
     </div>
 </body>
-
 </html>
