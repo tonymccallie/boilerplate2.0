@@ -6,3 +6,11 @@ public_html/greyback_core/
 public_html/plugins/
 public_html/vendors/
 public_html/webroot_old/
+public_html/.buildpath
+public_html/.gitignore
+public_html/.htaccess
+public_html/.project
+public_html/.settings/
+public_html/README
+public_html/githooks/
+public_html/index.php
