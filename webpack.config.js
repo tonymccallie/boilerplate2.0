@@ -27,9 +27,9 @@ module.exports = {
 	},
 	plugins: [
 		new LiveReloadPlugin(),
-		new webpack.optimize.UglifyJsPlugin({
-			compress: { warnings: false }
-		}),
+		// new webpack.optimize.UglifyJsPlugin({
+		// 	compress: { warnings: false }
+		// }),
 		new webpack.ProvidePlugin({
 			$: 'jquery',
 			jQuery: 'jquery',
@@ -39,7 +39,7 @@ module.exports = {
 		}),
 		new ExtractTextPlugin('webroot/css/styles.min.css'),
 		new CopyWebpackPlugin([
-			{from:'./wrapkit/ui',to:'webroot/images/ui'},
+			{from:'./wrapkit/ui',to:'webroot/images'},
 			{from:'./wrapkit/scss/icons/iconmind/fonts',to:'webroot/fonts'},
 			{from:'./wrapkit/scss/icons/simple-line-icons/fonts',to:'webroot/fonts'},
 			{from:'./wrapkit/scss/icons/themify-icons/fonts',to:'webroot/fonts'},
@@ -57,7 +57,7 @@ module.exports = {
 						{
 							loader: 'css-loader', // translates CSS into CommonJS modules
 							options: {
-								minimize: true
+								//minimize: true
 							}
 						}, {
 							loader: 'postcss-loader', // Run post css actions
