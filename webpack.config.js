@@ -5,6 +5,8 @@ const precss = require('precss');
 
 const TransferWebpackPlugin = require('transfer-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const LiveReloadPlugin = require('webpack-livereload-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
 module.exports = {
@@ -13,22 +15,37 @@ module.exports = {
 		ignored: /node_modules/
 	},
 	entry: [
-		'./public_html/webroot/js/custom.js',
+		'./config.js',
 		'./font-awesome.config.scss',
-		'./public_html/webroot/scss/styles.scss'
+		//'./wrapkit/scss/icons/simple-line-icons/scss/simple-line-icons.scss',
+		'./config.scss'
 	],
 	output: {
 		filename: 'webroot/js/bundle.js',
-		path: path.resolve(__dirname, 'public_html')
+		path: path.resolve(__dirname, 'public_html'),
+		publicPath: '/'
 	},
 	plugins: [
+		new LiveReloadPlugin(),
+		// new webpack.optimize.UglifyJsPlugin({
+		// 	compress: { warnings: false }
+		// }),
 		new webpack.ProvidePlugin({
 			$: 'jquery',
 			jQuery: 'jquery',
 			'window.jQuery': 'jquery',
-			Popper: ['popper.js', 'default']
+			Popper: ['popper.js', 'default'],
+			AOS: 'aos'
 		}),
 		new ExtractTextPlugin('webroot/css/styles.min.css'),
+		new CopyWebpackPlugin([
+			{from:'./wrapkit/ui',to:'webroot/images'},
+			{from:'./wrapkit/scss/icons/iconmind/fonts',to:'webroot/fonts'},
+			{from:'./wrapkit/scss/icons/simple-line-icons/fonts',to:'webroot/fonts'},
+			{from:'./wrapkit/scss/icons/themify-icons/fonts',to:'webroot/fonts'},
+			{from:'./wrapkit/scss/icons/weather-icons/fonts',to:'webroot/fonts'},
+			{from:'./node_modules/font-awesome/fonts',to:'webroot/fonts'}
+		])
 	],
 	module: {
 		rules: [
@@ -68,7 +85,7 @@ module.exports = {
 			},
 			{
 				test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
-				use: 'file-loader?name=webroot/fonts/[name].[ext]',
+				use: 'file-loader?name=webroot/fonts/[name].[ext]'
 			},
 
 			// font-awesome
