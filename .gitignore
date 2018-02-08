@@ -1,5 +1,6 @@
 .vscode/
 .DS_Store
+node_modules/
 public_html/cake/
 public_html/cake*
 public_html/greyback_core/
