@@ -1,4 +1,5 @@
 //Required JS Includes
+window.$ = require("jquery");
 require("bootstrap");
 require("aos");
 require("owl.carousel");
